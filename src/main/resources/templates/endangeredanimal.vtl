@@ -1,0 +1,44 @@
+<h2>Endangered Animal Name: $animal.getName()<h2>
+<h2>Health: $animal.getHealth()</h2>
+<h2>Age: $animal.getAge()</h2>
+<br>
+<form action="/endangeredanimal/$animal.getId()/update" method="post">
+
+  <h2>Edit Information</h2>
+  <label for="name">Endangered Animal Name</label>
+  <input id="name" name="name" type="text">
+  <br>
+  <label for="health">Health</label>
+    <select name="health">
+      <option value=1>Good</option>
+      <option value=2>Poor</option>
+    </select>
+  <br>
+  <label for="age">Age</label>
+  <input id="age" name="age" type="text">
+  <br>
+  <button type="submit" class="btn btn-info btn-sm">Update Endangered Animal</button>
+</form>
+<form action="/endangeredanimal/$animal.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger animalDelete">Delete Animal</button>
+</form>
+<br>
+<h3>Add a Sighting</h3>
+<form action="/endangeredanimal/$animal.getId()" method="post">
+  <label for="location">Location</label>
+  <input id="location" name="location" name="text">
+  <br>
+  <label for="name">Ranger</label>
+  <input id="name" name="name" name="text">
+  <br>
+  <button type="submit" class="btn btn-success btn-sm">Add sighting</button>
+</form>
+
+<h2>All Sightings</h2>
+#foreach ($sighting in $sightings)
+  <a href="/sighting/$sighting.getId()">
+    <h4>Location: $sighting.getLocation()</h4>
+    <h4>Ranger: $sighting.getRanger()</h4>
+    <h4>Time: $sighting.getDateSighted()</h4>
+  </a>
+#end
